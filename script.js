@@ -34,7 +34,12 @@ function ABCD(num) {
 }
 
 function showhide() {
-    document.getElementById('tool').style.display = "flex";
+    if (document.getElementById('tool').style.display == "flex") {
+        document.getElementById('tool').style.display = "none";
+    } else {
+        document.getElementById('tool').style.display = "flex";
+    }
+
 }
 
 function resetOutput(className) {
