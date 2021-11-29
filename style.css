@@ -75,6 +75,14 @@ input {
     align-items: center;
 }
 
+#load span {
+    position: fixed;
+    margin-top: 20%;
+    font-size: 16px;
+    font-weight: bold;
+    color: lightcoral;
+}
+
 .loading {
     width: 50%;
     height: 50%;
