@@ -46,6 +46,7 @@ function run() {
         if (width <= 600) {
             document.getElementById('tool').style.display = "none";
         }
+        document.getElementById('load').style.display = "none";
         for (let i = 0; i < data.questions.length; i++) {
             let question = data.questions[i].content
             question = String(i + 1) + ". " + String(HTMLtoOnlyText(stringToHTML(question))).replace("&nbsp;", "")
