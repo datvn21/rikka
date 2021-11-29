@@ -37,15 +37,7 @@ function showhide() {
     document.getElementById('tool').style.display = "flex";
 }
 
-function resetOutput(className) {
-    const elements = document.getElementsByClassName(className);
-    while (elements.length > 0) {
-        elements[0].parentNode.removeChild(elements[0]);
-    }
-}
-
 function run() {
-    resetOutput('questions')
     console.log("Waitting...");
     jQuery.getJSON("https://raw.githubusercontent.com/datvn21/lmschecker/main/json%20demo/" + document.getElementById('name').value + ".json").then(data => {
         console.log(data);
