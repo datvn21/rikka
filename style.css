@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    font-family: Montserrat;
+    background-color: rgb(255, 255, 255);
+}
+
+.tool {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width: 50%;
+    background-color: rgb(204, 200, 255);
+    border-right: 5px solid rgb(161, 186, 255);
+}
+
+img {
+    min-width: 45%;
+    height: auto;
+    object-fit: cover
+}
+
+.enter {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.inp {
+    border: 3px solid rgb(76 73 103);
+    width: 200px;
+    margin: 3px;
+    height: 40px;
+    border-radius: 15px;
+}
+
+input {
+    padding: 2px;
+    text-align: center;
+}
+
+.btn {
+    border: none;
+    font-weight: bold;
+    font-size: 20px;
+    background-color: rgb(76 73 103);
+    margin: 5px;
+    width: 120px;
+    height: 40px;
+    color: rgb(207, 194, 238);
+    border-radius: 10px;
+}
+
+.export {
+    margin-left: 50%;
+    padding: 5%;
+    width: 45%;
+    background-color: rgb(255, 255, 255);
+}
+
+.questions {
+    font-size: 18px;
+    padding: 5px;
+}
+
+.answers {
+    padding: 5px;
+    font-size: 14px;
+    margin-left: 15px;
+}
+
+.answers-right {
+    padding: 5px;
+    font-size: 14px;
+    margin-left: 15px;
+    color: rgb(255, 87, 87);
+    font-weight: bold;
+}
+
+.mb {
+    margin: 5px;
+    width: 50px;
+    height: 30px;
+    display: none;
+    border-radius: 20px;
+    background-color: rgb(255, 185, 212);
+    border: none;
+    color: rgb(161, 37, 37);
+    font-weight: bold;
+    position: absolute;
+    right: 0px;
+}
+
+@media screen and (max-width: 600px) {
+    body {
+        display: initial;
+    }
+    .mb {
+        display: initial;
+    }
+    .tool {
+        display: flex;
+        width: 100%;
+        position: initial;
+        border-radius: 0px 0px 20px 20px;
+        border: none;
+    }
+    .export {
+        margin-top: 30px;
+        width: 100%;
+        margin-left: 0%;
+        padding: 2%;
+    }
+    .questions {
+        font-size: 16px;
+    }
+}
