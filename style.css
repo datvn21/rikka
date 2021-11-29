@@ -129,16 +129,18 @@ input {
 
 .mb {
     margin: 5px;
+    display: none;
+    right: 0px;
+    position: absolute;
+    background-color: rgb(255, 233, 233);
+    color: rgb(255, 87, 87);
+    outline: none;
+    border: 2px solid rgb(255, 87, 87);
+    border-radius: 20px;
     width: 50px;
     height: 30px;
-    display: none;
-    border-radius: 20px;
-    background-color: rgb(255, 185, 212);
-    border: none;
-    color: rgb(161, 37, 37);
+    font-size: 16px;
     font-weight: bold;
-    position: absolute;
-    right: 0px;
 }
 
 @media screen and (max-width: 600px) {
