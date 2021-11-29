@@ -53,6 +53,33 @@ function enterKeyboard(e) {
     return true;
 }
 
+function save() {
+    var width = $(window).width();
+    if (width > 600) {
+        document.getElementById('tool').style.display = "none";
+        document.getElementById('tool').style.cssText = ('width: 0%;');
+        document.getElementById('export').style.cssText = ('margin-left: 0%;width: 100%;');
+    }
+    var element = document.getElementById('export');
+    var opt = {
+        margin: 1,
+        filename: 'myfile.pdf',
+        image: { type: 'jpeg', quality: 1 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+
+    // New Promise-based usage:
+    html2pdf().set(opt).from(element).save();
+    setTimeout(function() {
+        if (width > 600) {
+            document.getElementById('tool').style.display = "flex";
+            document.getElementById('tool').style.cssText = ('width: 50%;');
+            document.getElementById('export').style.cssText = ('margin-left: 50%;width: 50%;');
+        }
+    }, 1000);
+}
+
 function run() {
     resetOutput('questions')
     console.log("Waitting...");
