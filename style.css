@@ -181,6 +181,9 @@ input {
 }
 
 @media screen and (max-width: 600px) {
+     ::-webkit-scrollbar {
+        width: 0px;
+    }
     body {
         display: initial;
     }
@@ -189,7 +192,7 @@ input {
     }
     .tool {
         display: flex;
-        width: 100%;
+        width: 110%;
         position: initial;
         border-radius: 0px 0px 20px 20px;
         border: none;
