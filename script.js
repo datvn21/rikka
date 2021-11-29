@@ -57,7 +57,9 @@ function save() {
     var width = $(window).width();
     if (width > 600) {
         document.getElementById('tool').style.display = "none";
-        document.getElementById('tool').style.cssText = ('width: 0%;');
+        document.getElementById('btn').style.display = "none";
+        document.getElementById('name').style.display = "none";
+        document.getElementById('tool').style.cssText = ('animation-name: screenShot;animation-duration: 0.5s;width:0px;border: none');
         document.getElementById('export').style.cssText = ('margin-left: 0%;width: 100%;');
     }
     var element = document.getElementById('export');
@@ -68,16 +70,18 @@ function save() {
         html2canvas: { scale: 2 },
         jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
     };
-
-    // New Promise-based usage:
-    html2pdf().set(opt).from(element).save();
+    setTimeout(function() {
+        html2pdf().set(opt).from(element).save();
+    }, 1000);
     setTimeout(function() {
         if (width > 600) {
             document.getElementById('tool').style.display = "flex";
-            document.getElementById('tool').style.cssText = ('width: 50%;');
+            document.getElementById('btn').style.display = "initial";
+            document.getElementById('name').style.display = "initial";
+            document.getElementById('tool').style.cssText = ('animation-name: screenShotReset;animation-duration: 0.5s;width:50%;');
             document.getElementById('export').style.cssText = ('margin-left: 50%;width: 50%;');
         }
-    }, 1000);
+    }, 1500);
 }
 
 function run() {
@@ -93,6 +97,7 @@ function run() {
             document.getElementById('tool').style.display = "flex";
         }
         document.getElementById('load').style.display = "none";
+        document.getElementById('save').style.display = "initial";
         for (let i = 0; i < data.questions.length; i++) {
             let question = data.questions[i].content
             question = String(i + 1) + ". " + String(HTMLtoOnlyText(stringToHTML(question))).replace("&nbsp;", "")

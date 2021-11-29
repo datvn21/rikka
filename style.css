@@ -11,11 +11,30 @@ body {
     background-color: rgb(255, 255, 255);
 }
 
+@keyframes screenShot {
+    from {
+        width: 50%;
+    }
+    to {
+        width: 0%;
+    }
+}
+
+@keyframes screenShotReset {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 50%;
+    }
+}
+
 .save {
+    margin: 5px;
+    display: none;
+    right: 0%;
     position: absolute;
-    margin-top: 1%;
-    margin-left: 51%;
-    background-color: rgb(255, 233, 233);
+    background-color: rgb(255, 220, 244);
     color: rgb(255, 87, 87);
     outline: none;
     border: 2px solid rgb(255, 87, 87);
@@ -132,7 +151,7 @@ input {
     display: none;
     right: 0px;
     position: absolute;
-    background-color: rgb(255, 233, 233);
+    background-color: rgb(255, 220, 244);
     color: rgb(255, 87, 87);
     outline: none;
     border: 2px solid rgb(255, 87, 87);
@@ -165,5 +184,8 @@ input {
     }
     .questions {
         font-size: 16px;
+    }
+    .save {
+        right: 15%;
     }
 }

@@ -17,15 +17,16 @@
 
 <body id="full">
     <button class="mb" onclick="showhide()"><i class="fas fa-bars"></i></button>
+    <button onclick="save()" id="save" class="save"><i class="fas fa-download"></i></button>
     <div id="tool" class="tool">
-        <img id="toHide" class="logo" src="https://i.pinimg.com/originals/f5/fe/8a/f5fe8ad01b0b102eea04d07f517909f0.png " alt="Yuuta">
+        <img class="logo" src="https://i.pinimg.com/originals/f5/fe/8a/f5fe8ad01b0b102eea04d07f517909f0.png " alt="Yuuta">
         <div id="toHide" class="enter">
             <input onkeypress="return enterKeyboard(event);" placeholder="Enter testId....." type="text" id="name" class="inp">
             <button id="btn" class="btn" onclick="run()">Run</button>
         </div>
 
     </div>
-    <button onclick="save()" id="save" class="save"><i class="fas fa-download"></i></button>
+
     <div id="export" class="export">
         <div id="load">
             <span>Quan trọng là cái tâm!</span>
