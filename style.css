@@ -109,7 +109,14 @@ img {
     border-radius: 15px;
 }
 
-input {
+.min {
+    padding: 2px;
+    text-align: center;
+    outline: none;
+    font-size: 14px;
+}
+
+.enter input {
     padding: 2px;
     text-align: center;
     outline: none;
