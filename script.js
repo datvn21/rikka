@@ -1,4 +1,5 @@
 console.log("Yuuta")
+let id = 0;
 
 function stringToHTML(str) {
     var parser = new DOMParser();
@@ -90,9 +91,19 @@ function save() {
 }
 
 function run() {
+    for (id = parseInt(document.getElementById('name').value, 10) + parseInt(document.getElementById('min').value, 10); id < parseInt(document.getElementById('name').value, 10) + 150; id++) {
+        try {
+            get(id)
+        } catch (error) {
+            console.log(id + " NOT FOUND")
+        }
+    }
+}
+
+function get(id) {
     resetOutput('questions')
     console.log("Waitting...");
-    jQuery.getJSON("https://raw.githubusercontent.com/datvn21/lmschecker/main/json%20demo/" + document.getElementById('name').value + ".json").then(data => {
+    jQuery.getJSON("https://raw.githubusercontent.com/datvn21/lmschecker/main/json%20demo/" + String(id) + ".json").then(data => {
         console.log(data);
         console.log("Size of Exam: " + data.questions.length + " questions")
         var width = $(window).width();
@@ -116,12 +127,13 @@ function run() {
             addQeDiv.appendChild(qeDiv)
             try {
                 for (let z = 0; z < data.questions[i].questions.length; z++) {
+                    console.log('Câu hỏi phụ: ' + z)
                     let questionChild = data.questions[i].questions[z].content
                     questionChild = String(z + 1) + ". " + String(HTMLtoOnlyText(stringToHTML(questionChild))).replace("&nbsp;", "")
                     console.log(questionChild)
                     let qeChildDiv = document.createElement("div")
                     qeChildDiv.classList.add('questions-child')
-                    qeChildDiv.setAttribute('id', 'questions-child' + String(z))
+                    qeChildDiv.setAttribute('id', 'questions' + String(i) + 'questions-child' + String(z))
                     let addQeChildDiv = document.getElementById('questions' + String(i))
                     let qeChild = document.createTextNode(questionChild);
                     qeChildDiv.appendChild(qeChild)
@@ -130,13 +142,18 @@ function run() {
                         let answer = data.questions[i].questions[z].answers[j].content
                         answer = ABCD(j) + "." + String(HTMLtoOnlyText(stringToHTML(answer))).replace("&nbsp;", "")
                         console.log(answer)
-                            /*let ansDiv = document.createElement("div")
+                        let ansDiv = document.createElement("div")
+                        if (data.questions[i].questions[z].answers[j].trueAnswer == 1) {
+                            ansDiv.classList.add('answers-right')
+                        } else {
                             ansDiv.classList.add('answers')
-                            ansDiv.setAttribute('id', 'answers')
-                            let addAnsDiv = document.getElementById('questions-child' + String(z))
-                            let ans = document.createTextNode(answer);
-                            ansDiv.appendChild(ans)
-                            addAnsDiv.appendChild(ansDiv)*/
+                        }
+                        ansDiv.setAttribute('id', 'answers')
+                        let addAnsDiv = document.getElementById('questions' + String(i) + 'questions-child' + String(z))
+                        console.log('Câu trả lời cho: ' + z)
+                        let ans = document.createTextNode(answer);
+                        ansDiv.appendChild(ans)
+                        addAnsDiv.appendChild(ansDiv)
                     }
                 }
 
@@ -158,9 +175,10 @@ function run() {
                     addAnsDiv.appendChild(ansDiv)
                 }
             }
-
         }
     }).catch(error => {
-        console.error(error);
+        //console.error(error);
+        let id = parseInt(document.getElementById('name').value, 10) + 151;
+        console.log(id + " NOT FOUND")
     });
 }

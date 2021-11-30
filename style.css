@@ -95,7 +95,15 @@ img {
 
 .inp {
     border: 3px solid rgb(76 73 103);
-    width: 200px;
+    width: 237px;
+    margin: 3px;
+    height: 40px;
+    border-radius: 15px;
+}
+
+.min {
+    border: 3px solid rgb(76 73 103);
+    width: 100px;
     margin: 3px;
     height: 40px;
     border-radius: 15px;
