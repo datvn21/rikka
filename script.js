@@ -129,7 +129,7 @@ function get(id) {
                 for (let z = 0; z < data.questions[i].questions.length; z++) {
                     console.log('Câu hỏi phụ: ' + z)
                     let questionChild = data.questions[i].questions[z].content
-                    questionChild = String(z + 1) + ". " + String(HTMLtoOnlyText(stringToHTML(questionChild))).replace("&nbsp;", "")
+                    questionChild = String(z + 1) + ". " + String(HTMLtoOnlyText(stringToHTML(questionChild))).replaceAll("&nbsp;", "").replace("&nbsp;", "")
                     console.log(questionChild)
                     let qeChildDiv = document.createElement("div")
                     qeChildDiv.classList.add('questions-child')
@@ -140,7 +140,7 @@ function get(id) {
                     addQeChildDiv.appendChild(qeChildDiv)
                     for (let j = 0; j < data.questions[i].questions[z].answers.length; j++) {
                         let answer = data.questions[i].questions[z].answers[j].content
-                        answer = ABCD(j) + "." + String(HTMLtoOnlyText(stringToHTML(answer))).replace("&nbsp;", "")
+                        answer = ABCD(j) + "." + String(HTMLtoOnlyText(stringToHTML(answer))).replaceAll("&nbsp;", "").replace("&nbsp;", "")
                         console.log(answer)
                         let ansDiv = document.createElement("div")
                         if (data.questions[i].questions[z].answers[j].trueAnswer == 1) {
@@ -160,7 +160,7 @@ function get(id) {
             } catch (error) {
                 for (let j = 0; j < data.questions[i].answers.length; j++) {
                     let answer = data.questions[i].answers[j].content
-                    answer = ABCD(j) + "." + String(HTMLtoOnlyText(stringToHTML(answer))).replace("&nbsp;", "")
+                    answer = ABCD(j) + "." + String(HTMLtoOnlyText(stringToHTML(answer))).replaceAll("&nbsp;", "").replace("&nbsp;", "")
                     console.log(answer)
                     let ansDiv = document.createElement("div")
                     if (data.questions[i].answers[j].trueAnswer == 1) {
