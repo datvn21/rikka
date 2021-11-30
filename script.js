@@ -1,5 +1,6 @@
 console.log("Yuuta")
 let id = 0;
+let min = 140;
 
 function stringToHTML(str) {
     var parser = new DOMParser();
@@ -91,7 +92,10 @@ function save() {
 }
 
 function run() {
-    for (id = parseInt(document.getElementById('name').value, 10) + parseInt(document.getElementById('min').value, 10); id < parseInt(document.getElementById('name').value, 10) + 150; id++) {
+    console.log(min)
+    if (document.getElementById('min').value !== "") { min = parseInt(document.getElementById('min').value, 10) }
+    console.log(min)
+    for (id = parseInt(document.getElementById('name').value, 10) + min; id < parseInt(document.getElementById('name').value, 10) + 150; id++) {
         try {
             get(id)
         } catch (error) {
@@ -103,6 +107,9 @@ function run() {
 function get(id) {
     resetOutput('questions')
     console.log("Waitting...");
+
+    document.getElementById('load').style.cssText = ('animation-name: load;animation-duration: 0.5s;')
+
     jQuery.getJSON("https://raw.githubusercontent.com/datvn21/lmschecker/main/json%20demo/" + String(id) + ".json").then(data => {
         console.log(data);
         console.log("Size of Exam: " + data.questions.length + " questions")
@@ -112,8 +119,10 @@ function get(id) {
         } else {
             document.getElementById('tool').style.display = "flex";
         }
-        document.getElementById('load').style.display = "none";
         document.getElementById('save').style.display = "initial";
+        setTimeout(function() {
+            document.getElementById('load').style.display = "none";
+        }, 500);
         for (let i = 0; i < data.questions.length; i++) {
             let question = data.questions[i].content
             question = String(i + 1) + ". " + String(HTMLtoOnlyText(stringToHTML(question))).replace("&nbsp;", "")
@@ -127,9 +136,8 @@ function get(id) {
             addQeDiv.appendChild(qeDiv)
             try {
                 for (let z = 0; z < data.questions[i].questions.length; z++) {
-                    console.log('Câu hỏi phụ: ' + z)
                     let questionChild = data.questions[i].questions[z].content
-                    questionChild = String(z + 1) + ". " + String(HTMLtoOnlyText(stringToHTML(questionChild))).replaceAll("&nbsp;", "").replace("&nbsp;", "")
+                    questionChild = String(z + 1) + ". " + String(HTMLtoOnlyText(stringToHTML(questionChild))).replace("/&nbsp;/g", "")
                     console.log(questionChild)
                     let qeChildDiv = document.createElement("div")
                     qeChildDiv.classList.add('questions-child')
@@ -140,7 +148,7 @@ function get(id) {
                     addQeChildDiv.appendChild(qeChildDiv)
                     for (let j = 0; j < data.questions[i].questions[z].answers.length; j++) {
                         let answer = data.questions[i].questions[z].answers[j].content
-                        answer = ABCD(j) + "." + String(HTMLtoOnlyText(stringToHTML(answer))).replaceAll("&nbsp;", "").replace("&nbsp;", "")
+                        answer = ABCD(j) + "." + String(HTMLtoOnlyText(stringToHTML(answer))).replace("/&nbsp;/g", "")
                         console.log(answer)
                         let ansDiv = document.createElement("div")
                         if (data.questions[i].questions[z].answers[j].trueAnswer == 1) {
@@ -150,7 +158,6 @@ function get(id) {
                         }
                         ansDiv.setAttribute('id', 'answers')
                         let addAnsDiv = document.getElementById('questions' + String(i) + 'questions-child' + String(z))
-                        console.log('Câu trả lời cho: ' + z)
                         let ans = document.createTextNode(answer);
                         ansDiv.appendChild(ans)
                         addAnsDiv.appendChild(ansDiv)
