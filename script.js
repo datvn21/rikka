@@ -107,9 +107,7 @@ function run() {
 function get(id) {
     resetOutput('questions')
     console.log("Waitting...");
-
     document.getElementById('load').style.cssText = ('animation-name: load;animation-duration: 0.5s;')
-
     jQuery.getJSON("https://raw.githubusercontent.com/datvn21/lmschecker/main/json%20demo/" + String(id) + ".json").then(data => {
         console.log(data);
         console.log("Size of Exam: " + data.questions.length + " questions")
@@ -125,7 +123,7 @@ function get(id) {
         }, 500);
         for (let i = 0; i < data.questions.length; i++) {
             let question = data.questions[i].content
-            question = String(i + 1) + ". " + String(HTMLtoOnlyText(stringToHTML(question))).replace("&nbsp;", "")
+            question = String(i + 1) + ". " + String(HTMLtoOnlyText(stringToHTML(question))).replace("/&nbsp;/g", "")
             console.log(question)
             let qeDiv = document.createElement("div")
             qeDiv.classList.add('questions')
@@ -167,7 +165,7 @@ function get(id) {
             } catch (error) {
                 for (let j = 0; j < data.questions[i].answers.length; j++) {
                     let answer = data.questions[i].answers[j].content
-                    answer = ABCD(j) + "." + String(HTMLtoOnlyText(stringToHTML(answer))).replaceAll("&nbsp;", "").replace("&nbsp;", "")
+                    answer = ABCD(j) + "." + String(HTMLtoOnlyText(stringToHTML(answer))).replaceAll("&nbsp;", "").replace("/&nbsp;/g", "")
                     console.log(answer)
                     let ansDiv = document.createElement("div")
                     if (data.questions[i].answers[j].trueAnswer == 1) {
