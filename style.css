@@ -204,7 +204,14 @@ img {
   font-size: 16px;
   font-weight: bold;
 }
-
+.export .questions img {
+  max-height: 50px;
+  width: auto;
+  min-width: 0%;
+}
+.export .questions .answers-right img {
+  background-color: rgb(255, 195, 195);
+}
 @media screen and (max-width: 600px) {
   ::-webkit-scrollbar {
     width: 0px;

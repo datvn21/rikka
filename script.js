@@ -11,6 +11,7 @@ function stringToHTML(str) {
 }
 
 function HTMLtoOnlyText(html) {
+  //console.log(html.childNodes[0].childNodes[0].childNodes);
   return html.textContent;
 }
 
@@ -140,13 +141,18 @@ function get(id) {
       }, 500);
       for (let i = 0; i < data.questions.length; i++) {
         let question = data.questions[i].content;
+        html = stringToHTML(question);
+        childeNodeHTML = html.childNodes[0].childNodes[0].childNodes;
+        var profile = new Image();
+        console.log(childeNodeHTML);
+        for (let numm = 0; numm < childeNodeHTML.length; numm++) {
+          if (childeNodeHTML[numm].localName == "img") {
+            chhildd = childeNodeHTML[numm];
+            profile.src = chhildd.attributes[0].nodeValue;
+          }
+        }
         question =
-          String(i + 1) +
-          ". " +
-          String(HTMLtoOnlyText(stringToHTML(question))).replace(
-            "/&nbsp;/g",
-            ""
-          );
+          String(i + 1) + ". " + String(HTMLtoOnlyText(stringToHTML(question)));
         //console.log(question);
         let qeDiv = document.createElement("div");
         qeDiv.classList.add("questions");
@@ -154,6 +160,7 @@ function get(id) {
         let addQeDiv = document.getElementById("export");
         let qe = document.createTextNode(question);
         qeDiv.appendChild(qe);
+        qeDiv.appendChild(profile);
         addQeDiv.appendChild(qeDiv);
         try {
           for (let z = 0; z < data.questions[i].questions.length; z++) {
@@ -210,6 +217,16 @@ function get(id) {
         } catch (error) {
           for (let j = 0; j < data.questions[i].answers.length; j++) {
             let answer = data.questions[i].answers[j].content;
+            html = stringToHTML(answer);
+            childeNodeHTML = html.childNodes[0].childNodes[0].childNodes;
+            var profile = new Image();
+            console.log(childeNodeHTML);
+            for (let numm = 0; numm < childeNodeHTML.length; numm++) {
+              if (childeNodeHTML[numm].localName == "img") {
+                chhildd = childeNodeHTML[numm];
+                profile.src = chhildd.attributes[0].nodeValue;
+              }
+            }
             answer =
               ABCD(j) +
               "." +
@@ -217,6 +234,7 @@ function get(id) {
                 .replaceAll("&nbsp;", "")
                 .replace("/&nbsp;/g", "");
             //console.log(answer);
+
             let ansDiv = document.createElement("div");
             if (data.questions[i].answers[j].trueAnswer == 1) {
               ansDiv.classList.add("answers-right");
@@ -227,6 +245,7 @@ function get(id) {
             let addAnsDiv = document.getElementById("questions" + String(i));
             let ans = document.createTextNode(answer);
             ansDiv.appendChild(ans);
+            ansDiv.appendChild(profile);
             addAnsDiv.appendChild(ansDiv);
           }
         }
