@@ -114,7 +114,9 @@ function run() {
     }
   }
 }
-
+const stringNameTest = () => {
+  get(document.getElementById("name").value);
+};
 function get(id) {
   resetOutput("questions");
   //console.log("Waitting...");
