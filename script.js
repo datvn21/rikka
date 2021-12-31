@@ -201,7 +201,7 @@ function get(id) {
                   ""
                 );
               //console.log(answer);
-              let ansDiv = document.createElement("div");
+              let ansDiv = document.createElement("li");
               if (data.questions[i].questions[z].answers[j].trueAnswer == 1) {
                 ansDiv.classList.add("answers-right");
               } else {
@@ -237,7 +237,7 @@ function get(id) {
                 .replace("/&nbsp;/g", "");
             //console.log(answer);
 
-            let ansDiv = document.createElement("div");
+            let ansDiv = document.createElement("li");
             if (data.questions[i].answers[j].trueAnswer == 1) {
               ansDiv.classList.add("answers-right");
             } else {
