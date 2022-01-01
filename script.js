@@ -195,7 +195,7 @@ function get(id) {
               let answer = data.questions[i].questions[z].answers[j].content;
               answer =
                 ABCD(j) +
-                "." +
+                ". " +
                 String(HTMLtoOnlyText(stringToHTML(answer))).replace(
                   "/&nbsp;/g",
                   ""
@@ -231,7 +231,7 @@ function get(id) {
             }
             answer =
               ABCD(j) +
-              "." +
+              ". " +
               String(HTMLtoOnlyText(stringToHTML(answer)))
                 .replaceAll("&nbsp;", "")
                 .replace("/&nbsp;/g", "");
