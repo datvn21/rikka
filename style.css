@@ -219,7 +219,7 @@ img {
 .export .questions .answers-right img {
   background-color: rgb(255, 195, 195);
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   ::-webkit-scrollbar {
     width: 0px;
   }
