@@ -85,7 +85,7 @@ body {
   height: 100vh;
   width: 50%;
   background-color: #fad2df;
-  border-right: 5px solid rgb(133, 111, 168);
+  border-right: 5px solid #fd98b8;
 }
 
 img {
@@ -101,7 +101,7 @@ img {
 }
 
 .inp {
-  border: 3px solid rgb(76 73 103);
+  border: 3px solid #ff6795;
   width: 237px;
   margin: 3px;
   height: 40px;
@@ -135,16 +135,16 @@ img {
   border: none;
   font-weight: bold;
   font-size: 20px;
-  background-color: rgb(76, 73, 103);
+  background-color: #ff6795;
   margin: 5px;
   width: 120px;
-  height: 40px;
-  color: rgb(207, 194, 238);
-  border-radius: 10px;
+  height: 45px;
+  color: rgb(253, 195, 255);
+  border-radius: 15px;
 }
 
 .btn:hover {
-  background-color: rgb(105, 83, 141);
+  background-color: #ff84a9;
 }
 
 .export {
@@ -165,7 +165,6 @@ img {
 .loading {
   width: 50%;
   height: 50%;
-  border-radius: 30px;
 }
 
 .questions {
